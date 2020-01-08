@@ -351,10 +351,16 @@
 			return this.options.serviceUrl + '/' + this.options.profile + '/' +
 				locs.join(';') + '?' +
 				(options.geometryOnly ? (options.simplifyGeometry ? '' : 'overview=full') : 'overview=false') +
-				'&alternatives=' + computeAlternative.toString() +
+				(options.alternatives !== 'default' ? '&alternatives=' + computeAlternative.toString() : '') +
+				(options.roundtrip !== 'default' ? '&roundtrip=' + options.roundtrip.toString() : '') +
 				'&steps=' + computeInstructions.toString() +
 				(this.options.useHints ? '&hints=' + hints.join(';') : '') +
-				(options.allowUTurns ? '&continue_straight=' + !options.allowUTurns : '');
+				(options.allowUTurns ? '&continue_straight=' + !options.allowUTurns : '') + 
+				(options.geometries ? '&geometries=' + options.geometries : '') + 
+				(options.waypointNames ? '&waypoint_names=' + options.waypointNames.join(';') : '') +
+				(options.source ? '&source=' + options.source : '') +
+				(options.destination ? '&destination=' + options.destination : '') +
+				(options.exclude ? '&exclude=' + options.exclude : '');
 		},
 
 		_locationKey: function(location) {
