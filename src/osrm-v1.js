@@ -157,9 +157,9 @@
 			}
 
 			actualWaypoints = this._toWaypoints(inputWaypoints, response.waypoints);
-
+			var routes = response.routes || response.trips;
 			for (i = 0; i < response.routes.length; i++) {
-				route = this._convertRoute(response.routes[i]);
+				route = this._convertRoute(routes[i]);
 				route.inputWaypoints = inputWaypoints;
 				route.waypoints = actualWaypoints;
 				route.properties = {isSimplified: !options || !options.geometryOnly || options.simplifyGeometry};
