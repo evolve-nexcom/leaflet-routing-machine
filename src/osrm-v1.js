@@ -357,7 +357,7 @@
 				(this.options.useHints ? '&hints=' + hints.join(';') : '') +
 				(options.allowUTurns ? '&continue_straight=' + !options.allowUTurns : '') + 
 				(options.geometries ? '&geometries=' + options.geometries : '') + 
-				(options.waypointNames ? '&waypoint_names=' + options.waypointNames.join(';') : '') +
+				(options.waypointNames ? '&waypoint_names=' + options.waypointNames : '') +
 				(options.source ? '&source=' + options.source : '') +
 				(options.destination ? '&destination=' + options.destination : '') +
 				(options.exclude ? '&exclude=' + options.exclude : '');
