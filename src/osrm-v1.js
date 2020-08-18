@@ -350,17 +350,25 @@
 
 			return this.options.serviceUrl + '/' + this.options.profile + '/' +
 				locs.join(';') + '?' +
-				(options.geometryOnly ? (options.simplifyGeometry ? '' : 'overview=full') : 'overview=false') +
+				(options.overview ? (options.geometryOnly ? (options.simplifyGeometry ? '' : 'overview=full') : 'overview=false') : '') +
 				(options.alternatives !== 'default' ? '&alternatives=' + computeAlternative.toString() : '') +
 				(options.roundtrip !== 'default' ? '&roundtrip=' + options.roundtrip.toString() : '') +
-				'&steps=' + computeInstructions.toString() +
+				(options.steps !== 'default' ? '&steps=' + options.steps.toString() : '') +
 				(this.options.useHints ? '&hints=' + hints.join(';') : '') +
 				(options.allowUTurns ? '&continue_straight=' + !options.allowUTurns : '') + 
 				(options.geometries ? '&geometries=' + options.geometries : '') + 
 				(options.waypointNames ? '&waypoint_names=' + options.waypointNames : '') +
 				(options.source ? '&source=' + options.source : '') +
 				(options.destination ? '&destination=' + options.destination : '') +
-				(options.exclude ? '&exclude=' + options.exclude : '');
+				(options.annotations ? '&annotations=' + options.annotations : '') +
+				// matrix options
+				(options.approaches ? '&approaches=' + options.approaches : '') +
+				(options.destinations ? '&destinations=' + options.destinations : '') +
+				(options.fallback_speed ? '&fallback_speed=' + options.fallback_speed : '') +
+				(options.sources ? '&sources=' + options.sources : '') +
+				// end matrix
+				(options.exclude ? '&exclude=' + options.exclude : '')
+				;
 		},
 
 		_locationKey: function(location) {
