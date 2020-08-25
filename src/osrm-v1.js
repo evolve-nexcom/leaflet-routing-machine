@@ -81,7 +81,9 @@
 			// the request is being processed.
 			for (i = 0; i < waypoints.length; i++) {
 				wp = waypoints[i];
-				wps.push(new Waypoint(wp.latLng, wp.name, wp.options));
+				let trip_index = wp.trips_index ? wp.trips_index : null
+				let waypoint_index = wp.waypoint_index ? wp.waypoint_index : null
+				wps.push(new Waypoint(wp.latLng, wp.name, wp.options, trip_index, waypoint_index));
 			}
 
 			return xhr = corslite(url, L.bind(function(err, resp) {
@@ -324,7 +326,7 @@
 				viaLoc = vias[i].location;
 				wps.push(new Waypoint(L.latLng(viaLoc[1], viaLoc[0]),
 				                            inputWaypoints[i].name,
-											inputWaypoints[i].options));
+											inputWaypoints[i].options, vias[i].trips_index, vias[i].waypoint_index));
 			}
 
 			return wps;
