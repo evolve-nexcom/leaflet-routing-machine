@@ -178,6 +178,7 @@
 					name: '',
 					coordinates: [],
 					instructions: [],
+					legs: [],
 					summary: {
 						totalDistance: responseRoute.distance,
 						totalTime: responseRoute.duration
@@ -206,6 +207,7 @@
 
 			for (i = 0; i < legCount; i++) {
 				leg = responseRoute.legs[i];
+				result.legs.push(leg)
 				legNames.push(leg.summary && leg.summary.charAt(0).toUpperCase() + leg.summary.substring(1));
 				for (j = 0; j < leg.steps.length; j++) {
 					step = leg.steps[j];
