@@ -81,8 +81,8 @@
 			// the request is being processed.
 			for (i = 0; i < waypoints.length; i++) {
 				wp = waypoints[i];
-				let trip_index = wp.trips_index ? wp.trips_index : null
-				let waypoint_index = wp.waypoint_index ? wp.waypoint_index : null
+				var trip_index = wp.trips_index ? wp.trips_index : null
+				var waypoint_index = wp.waypoint_index ? wp.waypoint_index : null
 				wps.push(new Waypoint(wp.latLng, wp.name, wp.options, trip_index, waypoint_index));
 			}
 
